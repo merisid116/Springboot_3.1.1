@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>edit user</title>
+</head>
+<body>
+<h2>edit user</h2>
+<div>
+
+    <form th:action="@{/users/edit}" th:object="${user}" method="post">
+        <input type="hidden" name="id" th:value="${user.getId()}">
+        <fieldset>
+            <legend>User data</legend>
+            <p>
+                <label th:for="name">Name</label>
+                <input type="text" name="name" th:id="name" th:value="${user.getName()}">
+            <div style="color:indianred" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name error</div>
+            </p>
+            <p>
+                <label th:for="surname">Surname</label>
+                <input type="text" name="surname" th:id="surname" th:value="${user.getSurname()}"><br/>
+            <div style="color:indianred" th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}">Surname error</div>
+            </p>
+            <p>
+                <label th:for="age">Age</label>
+                <input type="text" name="age" th:id="age" th:value="${user.getAge()}"><br/>
+            <div style="color:indianred" th:if="${#fields.hasErrors('age')}" th:errors="*{age}">Age error</div>
+            </p>
+            <label th:for="departament">Departament</label>
+            <input type="text" name="departament" th:id="departament" th:value="${user.getDepartament()}"><br/>
+            <div style="color:indianred" th:if="${#fields.hasErrors('departament')}" th:errors="*{departament}">Departament error</div>
+            </p>
+
+        </fieldset>
+        <button style="background:#bfe3ef" type="submit">To change the data</button>
+    </form>
+
+
+    <br/>
+    <form th:action="@{/}">
+        <button style="background:#f3bfae" type="submit">Back to user list</button>
+    </form>
+</div>
+</body>
+</html>
